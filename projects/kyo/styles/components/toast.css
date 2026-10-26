@@ -1,0 +1,102 @@
+@layer kyo.components {
+  .kyo-toaster {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: calc(var(--kyo-space-5) + env(safe-area-inset-bottom));
+    z-index: var(--kyo-z-toast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--kyo-space-2);
+    padding-inline: var(--kyo-space-3);
+    pointer-events: none;
+  }
+
+  .kyo-toast {
+    /* Inverted surface: readable on any page background */
+    --kyo-toast-bg: var(--kyo-fg);
+    --kyo-toast-fg: var(--kyo-bg);
+    --kyo-toast-icon-color: currentColor;
+    --kyo-toast-radius: var(--kyo-radius-lg);
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--kyo-space-2-5);
+    max-inline-size: 28rem;
+    padding: var(--kyo-space-2-5) var(--kyo-space-2) var(--kyo-space-2-5) var(--kyo-space-4);
+    border-radius: var(--kyo-toast-radius);
+    background-color: var(--kyo-toast-bg);
+    color: var(--kyo-toast-fg);
+    box-shadow: var(--kyo-shadow-lg);
+    font-size: var(--kyo-text-sm);
+    line-height: var(--kyo-leading-snug);
+    pointer-events: auto;
+    animation: kyo-toast-in var(--kyo-duration-slow) var(--kyo-ease-out);
+  }
+
+  .kyo-toast[data-tone='success'] {
+    --kyo-toast-icon-color: light-dark(var(--kyo-green-400), var(--kyo-green-600));
+  }
+
+  .kyo-toast[data-tone='warning'] {
+    --kyo-toast-icon-color: light-dark(var(--kyo-amber-400), var(--kyo-amber-600));
+  }
+
+  .kyo-toast[data-tone='info'],
+  .kyo-toast[data-tone='accent'] {
+    --kyo-toast-icon-color: light-dark(var(--kyo-sky-400), var(--kyo-sky-600));
+  }
+
+  .kyo-toast[data-tone='danger'] {
+    --kyo-toast-bg: var(--kyo-danger-solid);
+    --kyo-toast-fg: var(--kyo-fg-on-accent);
+  }
+
+  .kyo-toast > .kyo-icon {
+    --kyo-icon-size: 1.125rem;
+    color: var(--kyo-toast-icon-color);
+  }
+
+  .kyo-toast__message {
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  .kyo-toast__close {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--kyo-radius-control);
+    background: transparent;
+    color: inherit;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .kyo-toast__close:hover {
+    background-color: color-mix(in oklab, currentColor 15%, transparent);
+    opacity: 1;
+  }
+
+  .kyo-toast__close:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid currentColor;
+    outline-offset: 0;
+  }
+
+  .kyo-toast__close svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+
+  @keyframes kyo-toast-in {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
+  }
+}

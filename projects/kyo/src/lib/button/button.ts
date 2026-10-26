@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { KyoSpinner } from '../spinner/spinner';
 
-export type KyoButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type KyoButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'link';
 export type KyoButtonSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -27,6 +27,8 @@ export type KyoButtonSize = 'sm' | 'md' | 'lg';
     '[attr.data-size]': 'size()',
     '[attr.aria-busy]': 'loading() || null',
     '[attr.aria-disabled]': 'loading() || null',
+    '[attr.data-icon-only]': 'iconOnly() || null',
+    '[attr.data-block]': 'block() || null',
   },
 })
 export class KyoButton {
@@ -34,6 +36,10 @@ export class KyoButton {
   readonly size = input<KyoButtonSize>('md');
   /** Shows a spinner and swallows clicks while keeping the button focusable. */
   readonly loading = input(false, { transform: booleanAttribute });
+  /** Square button holding a single icon. Give it an aria-label. */
+  readonly iconOnly = input(false, { transform: booleanAttribute });
+  /** Stretches the button to the full width of its container. */
+  readonly block = input(false, { transform: booleanAttribute });
 
   constructor() {
     // Capture listeners on the target run before any (click) bound by the consumer.

@@ -1,0 +1,130 @@
+@layer kyo.components {
+  .kyo-dialog {
+    --kyo-dialog-width: 32rem;
+    --kyo-dialog-padding: var(--kyo-space-6);
+    --kyo-dialog-radius: var(--kyo-radius-xl);
+    --kyo-dialog-bg: var(--kyo-surface-raised);
+    --kyo-dialog-fg: var(--kyo-fg);
+    --kyo-dialog-border-color: var(--kyo-border);
+    --kyo-dialog-shadow: var(--kyo-shadow-lg);
+
+    box-sizing: border-box;
+    inline-size: min(var(--kyo-dialog-width), 100% - 2 * var(--kyo-space-4));
+    max-inline-size: none;
+    max-block-size: calc(100dvh - 2 * var(--kyo-space-8));
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--kyo-dialog-border-color);
+    border-radius: var(--kyo-dialog-radius);
+    background-color: var(--kyo-dialog-bg);
+    color: var(--kyo-dialog-fg);
+    box-shadow: var(--kyo-dialog-shadow);
+    /* No overflow clipping here: it would also clip fixed children such as toasts */
+    overscroll-behavior: contain;
+    opacity: 0;
+    transition-property: opacity, display, overlay;
+    transition-duration: var(--kyo-duration-slow);
+    transition-timing-function: var(--kyo-ease-out);
+    transition-behavior: allow-discrete;
+  }
+
+  .kyo-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+  }
+
+  @starting-style {
+    .kyo-dialog[open] {
+      opacity: 0;
+    }
+  }
+
+  .kyo-dialog::backdrop {
+    background-color: var(--kyo-backdrop, oklch(0% 0 0 / 0.4));
+  }
+
+  .kyo-dialog[data-size='sm'] {
+    --kyo-dialog-width: 26rem;
+  }
+
+  .kyo-dialog[data-size='lg'] {
+    --kyo-dialog-width: 44rem;
+  }
+
+  /* Freeze the page behind a modal */
+  :root:has(.kyo-dialog[open]) {
+    overflow: hidden;
+  }
+
+  .kyo-dialog__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--kyo-space-4);
+    padding: var(--kyo-dialog-padding) var(--kyo-dialog-padding) 0;
+  }
+
+  .kyo-dialog__title {
+    margin: 0;
+    font-size: var(--kyo-text-lg);
+    font-weight: var(--kyo-weight-semibold);
+    line-height: var(--kyo-leading-tight);
+  }
+
+  .kyo-dialog__close {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: 2rem;
+    block-size: 2rem;
+    margin-block-start: calc(-1 * var(--kyo-space-1));
+    margin-inline-end: calc(-1 * var(--kyo-space-2));
+    padding: 0;
+    border: 0;
+    border-radius: var(--kyo-radius-control);
+    background: transparent;
+    color: var(--kyo-fg-muted);
+    cursor: pointer;
+  }
+
+  .kyo-dialog__close:hover {
+    background-color: var(--kyo-bg-muted);
+    color: var(--kyo-fg);
+  }
+
+  .kyo-dialog__close:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: 0;
+  }
+
+  .kyo-dialog__close svg {
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+  }
+
+  .kyo-dialog__body {
+    flex: 1;
+    min-block-size: 0;
+    padding: var(--kyo-dialog-padding);
+    overflow-y: auto;
+  }
+
+  .kyo-dialog__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--kyo-space-2);
+    padding: var(--kyo-space-4) var(--kyo-dialog-padding);
+    border-block-start: 1px solid var(--kyo-dialog-border-color);
+    border-end-start-radius: calc(var(--kyo-dialog-radius) - 1px);
+    border-end-end-radius: calc(var(--kyo-dialog-radius) - 1px);
+    background-color: var(--kyo-bg-subtle);
+  }
+
+  .kyo-confirm__message {
+    margin: 0;
+    color: var(--kyo-fg-muted);
+  }
+}

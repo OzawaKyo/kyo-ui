@@ -8,7 +8,8 @@ import { findDoc, PACKAGE_NAME } from './registry';
   template: `
     <header class="doc__header">
       <p class="doc__eyebrow">
-        <span kyoBadge tone="accent">{{ doc().kind === 'component' ? 'Composant' : 'Directive' }}</span>
+        <span kyoBadge tone="accent">{{ kindLabels[doc().kind] }}</span>
+        <span kyoBadge>{{ doc().category }}</span>
       </p>
       <h1>{{ doc().name }}</h1>
       <p class="doc__lead">{{ doc().summary }} {{ doc().description }}</p>
@@ -35,7 +36,7 @@ import { findDoc, PACKAGE_NAME } from './registry';
 
     @if (doc().inputs.length) {
       <section class="doc__section">
-        <h2>Inputs</h2>
+        <h2>{{ doc().kind === 'service' ? 'Méthodes' : 'Inputs' }}</h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -118,6 +119,7 @@ export class DocPage {
   readonly slug = input.required<string>();
 
   protected readonly packageName = PACKAGE_NAME;
+  protected readonly kindLabels = { component: 'Composant', directive: 'Directive', service: 'Service' };
   protected readonly doc = computed(() => findDoc(this.slug()));
   protected readonly importLine = computed(
     () => `import { ${this.doc().exports.join(', ')} } from '${PACKAGE_NAME}';`,

@@ -90,6 +90,22 @@
     --kyo-button-fg: var(--kyo-fg-on-accent);
   }
 
+  .kyo-button[data-variant='link'] {
+    --kyo-button-height: auto;
+    --kyo-button-padding-inline: 0;
+    --kyo-button-bg: transparent;
+    --kyo-button-bg-hover: transparent;
+    --kyo-button-bg-active: transparent;
+    --kyo-button-fg: var(--kyo-accent-text);
+
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .kyo-button[data-variant='link']:hover:not(:disabled, [aria-disabled='true']) {
+    text-decoration-thickness: 2px;
+  }
+
   /* Sizes */
   .kyo-button[data-size='sm'] {
     --kyo-button-height: var(--kyo-control-height-sm);
@@ -101,6 +117,21 @@
     --kyo-button-height: var(--kyo-control-height-lg);
     --kyo-button-padding-inline: var(--kyo-space-5);
     --kyo-button-font-size: var(--kyo-text-md);
+  }
+
+  /* Icons and layout */
+  .kyo-button .kyo-icon {
+    --kyo-icon-size: 1.125em;
+  }
+
+  .kyo-button[data-icon-only] {
+    inline-size: var(--kyo-button-height);
+    padding-inline: 0;
+  }
+
+  .kyo-button[data-block] {
+    display: flex;
+    inline-size: 100%;
   }
 
   @media (forced-colors: active) {

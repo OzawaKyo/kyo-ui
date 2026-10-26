@@ -1,0 +1,73 @@
+/* A text control with inline icons or buttons, drawn as a single field */
+@layer kyo.components {
+  .kyo-input-group {
+    --kyo-input-group-height: var(--kyo-control-height-md);
+    --kyo-input-group-radius: var(--kyo-radius-control);
+    --kyo-input-group-bg: var(--kyo-surface);
+    --kyo-input-group-border-color: var(--kyo-border-strong);
+    --kyo-input-group-ring-color: var(--kyo-focus-ring-color);
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--kyo-input-group-height);
+    border: 1px solid var(--kyo-input-group-border-color);
+    border-radius: var(--kyo-input-group-radius);
+    background-color: var(--kyo-input-group-bg);
+    outline: 2px solid transparent;
+    outline-offset: -1px;
+    transition-property: border-color, box-shadow;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-input-group:hover:not(:has(> .kyo-input:is(:disabled, :focus))) {
+    border-color: color-mix(in oklab, var(--kyo-input-group-border-color), var(--kyo-fg) 25%);
+  }
+
+  .kyo-input-group:has(> .kyo-input:focus) {
+    border-color: var(--kyo-input-group-ring-color);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--kyo-input-group-ring-color) 25%, transparent);
+  }
+
+  .kyo-input-group:has(> .kyo-input:is([aria-invalid='true'], .ng-invalid.ng-touched)) {
+    --kyo-input-group-border-color: var(--kyo-danger);
+    --kyo-input-group-ring-color: var(--kyo-danger);
+  }
+
+  .kyo-input-group:has(> .kyo-input:disabled) {
+    background-color: var(--kyo-bg-subtle);
+  }
+
+  /* The inner control drops its own frame: the group draws it */
+  .kyo-input-group > .kyo-input,
+  .kyo-input-group > .kyo-input:is(:hover, :focus) {
+    flex: 1;
+    block-size: 100%;
+    border: 0;
+    border-radius: inherit;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .kyo-input-group > .kyo-icon {
+    --kyo-icon-size: 1rem;
+    margin-inline: var(--kyo-space-3) 0;
+    color: var(--kyo-fg-subtle);
+  }
+
+  .kyo-input-group > .kyo-input + .kyo-icon {
+    margin-inline: 0 var(--kyo-space-3);
+  }
+
+  .kyo-input-group > .kyo-icon + .kyo-input {
+    padding-inline-start: var(--kyo-space-2);
+  }
+
+  .kyo-input-group > .kyo-button {
+    --kyo-button-height: calc(var(--kyo-input-group-height) - 2px - 2 * var(--kyo-space-1));
+    margin-inline: var(--kyo-space-1);
+  }
+}

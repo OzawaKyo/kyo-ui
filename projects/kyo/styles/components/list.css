@@ -1,0 +1,89 @@
+@layer kyo.components {
+  .kyo-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kyo-space-0-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .kyo-list[data-divided] {
+    gap: 0;
+  }
+
+  .kyo-list[data-divided] > * + * {
+    border-block-start: 1px solid var(--kyo-border);
+  }
+
+  .kyo-list-item {
+    --kyo-list-item-padding: var(--kyo-space-2) var(--kyo-space-2-5);
+    --kyo-list-item-radius: var(--kyo-radius-control);
+    --kyo-list-item-hover-bg: var(--kyo-bg-subtle);
+    --kyo-list-item-active-bg: var(--kyo-accent-subtle);
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--kyo-space-3);
+    inline-size: 100%;
+    margin: 0;
+    padding: var(--kyo-list-item-padding);
+    border: 0;
+    border-radius: var(--kyo-list-item-radius);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+  }
+
+  .kyo-list[data-divided] .kyo-list-item {
+    --kyo-list-item-padding: var(--kyo-space-3) 0;
+    --kyo-list-item-radius: 0;
+  }
+
+  :is(a, button).kyo-list-item {
+    cursor: pointer;
+    transition: background-color var(--kyo-duration-fast) var(--kyo-ease-standard);
+  }
+
+  :is(a, button).kyo-list-item:hover {
+    background-color: var(--kyo-list-item-hover-bg);
+  }
+
+  :is(a, button).kyo-list-item:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: -2px;
+  }
+
+  .kyo-list-item[aria-current]:not([aria-current='false']) {
+    background-color: var(--kyo-list-item-active-bg);
+  }
+
+  .kyo-list-item__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+
+  .kyo-list-item__title {
+    overflow: hidden;
+    font-size: var(--kyo-text-sm);
+    font-weight: var(--kyo-weight-medium);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .kyo-list-item__description {
+    color: var(--kyo-fg-muted);
+    font-size: var(--kyo-text-xs);
+  }
+
+  .kyo-list-item__actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--kyo-space-0-5);
+  }
+}

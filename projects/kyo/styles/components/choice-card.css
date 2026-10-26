@@ -1,0 +1,71 @@
+/* A label wrapping a checkbox or radio, highlighted as a whole when selected */
+@layer kyo.components {
+  .kyo-choice-card {
+    --kyo-choice-card-padding: var(--kyo-space-3) var(--kyo-space-4);
+    --kyo-choice-card-radius: var(--kyo-radius-control);
+    --kyo-choice-card-bg: var(--kyo-surface);
+    --kyo-choice-card-border-color: var(--kyo-border-strong);
+    --kyo-choice-card-checked-bg: var(--kyo-accent-subtle);
+    --kyo-choice-card-checked-border-color: var(--kyo-accent);
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--kyo-space-3);
+    padding: var(--kyo-choice-card-padding);
+    border: 1px solid var(--kyo-choice-card-border-color);
+    border-radius: var(--kyo-choice-card-radius);
+    background-color: var(--kyo-choice-card-bg);
+    color: var(--kyo-fg);
+    font-size: var(--kyo-text-sm);
+    line-height: var(--kyo-leading-snug);
+    cursor: pointer;
+    transition-property: background-color, border-color;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  /* Align the control with the first line of text */
+  .kyo-choice-card > input {
+    margin-block-start: calc((1lh - 1rem) / 2);
+  }
+
+  .kyo-choice-card:hover:not(:has(:disabled, :checked)) {
+    border-color: color-mix(in oklab, var(--kyo-choice-card-border-color), var(--kyo-fg) 25%);
+  }
+
+  .kyo-choice-card:has(:checked) {
+    border-color: var(--kyo-choice-card-checked-border-color);
+    background-color: var(--kyo-choice-card-checked-bg);
+  }
+
+  /* The whole card carries the focus ring, not the small control inside */
+  .kyo-choice-card:has(:focus-visible) {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-choice-card :focus-visible {
+    outline: none;
+  }
+
+  .kyo-choice-card:has(:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .kyo-choice-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kyo-space-0-5);
+    min-inline-size: 0;
+  }
+
+  .kyo-choice-card__label {
+    font-weight: var(--kyo-weight-medium);
+  }
+
+  .kyo-choice-card__description {
+    color: var(--kyo-fg-muted);
+  }
+}

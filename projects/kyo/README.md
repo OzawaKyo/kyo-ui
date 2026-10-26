@@ -38,6 +38,7 @@ import { KyoButton, KyoField, KyoInput } from '@kyo-ui/angular';
 - Density: `data-kyo-density="compact"` on any subtree.
 - Brand: override `--kyo-brand-50` … `--kyo-brand-950` (or just `--kyo-accent`).
 - Components expose `--kyo-<component>-*` variables. All library CSS lives in the `kyo` cascade layer, so any app CSS overrides it without `!important`.
+- That also applies to global resets: a rule like `:focus-visible { outline: … }` in your app beats Kyo's own focus styles. Exclude text fields, which draw their own border and halo (on the whole input group when there is one): `:focus-visible:not(.kyo-input, .kyo-input option) { … }` (options of a styled select highlight with a background instead).
 
 ## Develop
 

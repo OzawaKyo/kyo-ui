@@ -1,0 +1,57 @@
+@layer kyo.components {
+  .kyo-radio {
+    --kyo-radio-size: 1rem;
+    --kyo-radio-bg: var(--kyo-surface);
+    --kyo-radio-border-color: var(--kyo-border-strong);
+    --kyo-radio-checked-bg: var(--kyo-accent);
+    --kyo-radio-dot: var(--kyo-fg-on-accent);
+
+    appearance: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: var(--kyo-radio-size);
+    block-size: var(--kyo-radio-size);
+    margin: 0;
+    border: 1px solid var(--kyo-radio-border-color);
+    border-radius: var(--kyo-radius-full);
+    background-color: var(--kyo-radio-bg);
+    cursor: pointer;
+    transition-property: background-color, border-color;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-radio:hover:not(:disabled, :checked) {
+    border-color: color-mix(in oklab, var(--kyo-radio-border-color), var(--kyo-fg) 25%);
+  }
+
+  .kyo-radio:checked {
+    border-color: var(--kyo-radio-checked-bg);
+    background-color: var(--kyo-radio-checked-bg);
+    background-image: radial-gradient(
+      circle closest-side,
+      var(--kyo-radio-dot) 38%,
+      transparent calc(38% + 1px)
+    );
+  }
+
+  .kyo-radio:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-radio:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .kyo-radio:is([aria-invalid='true'], .ng-invalid.ng-touched) {
+    --kyo-radio-border-color: var(--kyo-danger);
+  }
+
+  @media (forced-colors: active) {
+    .kyo-radio {
+      appearance: auto;
+    }
+  }
+}

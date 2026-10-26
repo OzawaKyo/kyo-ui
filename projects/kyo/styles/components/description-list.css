@@ -1,0 +1,38 @@
+@layer kyo.components {
+  .kyo-description-list {
+    --kyo-description-list-term-width: fit-content(14rem);
+    --kyo-description-list-gap: var(--kyo-space-2-5) var(--kyo-space-5);
+
+    display: grid;
+    grid-template-columns: var(--kyo-description-list-term-width) minmax(0, 1fr);
+    gap: var(--kyo-description-list-gap);
+    margin: 0;
+    font-size: var(--kyo-text-sm);
+    /* Stacks on its own width, so it also works in a narrow card or side panel */
+    container-type: inline-size;
+  }
+
+  .kyo-description-list > dt {
+    color: var(--kyo-fg-muted);
+  }
+
+  .kyo-description-list > dd {
+    margin: 0;
+    color: var(--kyo-fg);
+    overflow-wrap: anywhere;
+  }
+
+  @container (max-width: 24rem) {
+    .kyo-description-list > :is(dt, dd) {
+      grid-column: 1 / -1;
+    }
+
+    .kyo-description-list > dt:not(:first-child) {
+      margin-block-start: var(--kyo-space-1);
+    }
+
+    .kyo-description-list > dt + dd {
+      margin-block-start: calc(var(--kyo-space-2) * -1);
+    }
+  }
+}

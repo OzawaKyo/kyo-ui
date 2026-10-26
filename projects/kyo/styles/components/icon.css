@@ -1,0 +1,17 @@
+@layer kyo.components {
+  .kyo-icon {
+    --kyo-icon-size: 1.25em;
+
+    display: inline-flex;
+    flex-shrink: 0;
+    inline-size: var(--kyo-icon-size);
+    block-size: var(--kyo-icon-size);
+    vertical-align: middle;
+  }
+
+  .kyo-icon > svg {
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+}

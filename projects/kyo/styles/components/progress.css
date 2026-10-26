@@ -1,0 +1,43 @@
+@layer kyo.components {
+  .kyo-progress {
+    --kyo-progress-height: 0.375rem;
+    --kyo-progress-radius: var(--kyo-radius-full);
+    --kyo-progress-track: var(--kyo-bg-muted);
+    --kyo-progress-fill: var(--kyo-accent);
+
+    display: block;
+    block-size: var(--kyo-progress-height);
+    border-radius: var(--kyo-progress-radius);
+    background-color: var(--kyo-progress-track);
+    overflow: clip;
+  }
+
+  .kyo-progress__fill {
+    display: block;
+    inline-size: var(--kyo-progress-value, 0%);
+    block-size: 100%;
+    border-radius: inherit;
+    background-color: var(--kyo-progress-fill);
+    transition: inline-size var(--kyo-duration-slow) var(--kyo-ease-standard);
+  }
+
+  .kyo-progress[data-indeterminate] .kyo-progress__fill {
+    inline-size: 40%;
+    animation: kyo-progress-slide 1.2s var(--kyo-ease-standard) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kyo-progress[data-indeterminate] .kyo-progress__fill {
+      animation-duration: 3s;
+    }
+  }
+
+  @keyframes kyo-progress-slide {
+    from {
+      margin-inline-start: -40%;
+    }
+    to {
+      margin-inline-start: 100%;
+    }
+  }
+}

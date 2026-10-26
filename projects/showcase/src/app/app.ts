@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { KyoInput } from '@kyo-ui/angular';
+import { KyoInput, KyoToast } from '@kyo-ui/angular';
 import {
   DensityPreference,
   DirectionPreference,
   Preferences,
   ThemePreference,
 } from './core/preferences';
-import { COMPONENT_DOCS } from './docs/registry';
+import { docsByCategory } from './docs/registry';
 
 @Component({
   imports: [RouterOutlet, RouterLink, RouterLinkActive, KyoInput],
@@ -17,7 +17,11 @@ import { COMPONENT_DOCS } from './docs/registry';
 })
 export class App {
   protected readonly prefs = inject(Preferences);
-  protected readonly docs = COMPONENT_DOCS;
+  protected readonly groups = docsByCategory();
+
+  constructor() {
+    inject(KyoToast).setDismissLabel('Fermer');
+  }
 
   protected setTheme(value: string): void {
     this.prefs.theme.set(value as ThemePreference);

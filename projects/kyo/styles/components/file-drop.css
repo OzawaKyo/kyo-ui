@@ -1,0 +1,61 @@
+@layer kyo.components {
+  .kyo-file-drop {
+    --kyo-file-drop-padding: var(--kyo-space-6) var(--kyo-space-4);
+    --kyo-file-drop-radius: var(--kyo-radius-container);
+    --kyo-file-drop-border-color: var(--kyo-border-strong);
+    --kyo-file-drop-active-border-color: var(--kyo-accent);
+    --kyo-file-drop-active-bg: var(--kyo-accent-subtle);
+
+    display: block;
+  }
+
+  .kyo-file-drop__zone {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--kyo-space-1) var(--kyo-space-2);
+    padding: var(--kyo-file-drop-padding);
+    border: 2px dashed var(--kyo-file-drop-border-color);
+    border-radius: var(--kyo-file-drop-radius);
+    color: var(--kyo-fg-muted);
+    font-size: var(--kyo-text-sm);
+    text-align: center;
+    cursor: pointer;
+    transition-property: border-color, background-color, color;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-file-drop__zone:hover,
+  .kyo-file-drop[data-over] .kyo-file-drop__zone {
+    border-color: var(--kyo-file-drop-active-border-color);
+    background-color: var(--kyo-file-drop-active-bg);
+    color: var(--kyo-accent-text);
+  }
+
+  .kyo-file-drop__zone:has(:focus-visible) {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-file-drop__hint {
+    flex-basis: 100%;
+    font-size: var(--kyo-text-xs);
+  }
+
+  .kyo-file-drop[data-busy] .kyo-file-drop__zone {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  .kyo-file-drop[data-disabled] .kyo-file-drop__zone {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .kyo-file-drop:is([data-busy], [data-disabled]) .kyo-file-drop__zone {
+    pointer-events: none;
+  }
+}

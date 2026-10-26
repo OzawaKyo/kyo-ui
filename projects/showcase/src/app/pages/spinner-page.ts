@@ -9,9 +9,9 @@ import { DocPage } from '../docs/doc-page';
   template: `
     <app-doc-page slug="spinner">
       <app-doc-example heading="Tailles" [code]="sizes">
-        <kyo-spinner size="sm" />
-        <kyo-spinner />
-        <kyo-spinner size="lg" />
+        <kyo-spinner size="sm" label="Chargement" />
+        <kyo-spinner label="Chargement" />
+        <kyo-spinner size="lg" label="Chargement" />
       </app-doc-example>
 
       <app-doc-example heading="Couleur héritée" description="Le spinner prend la couleur du texte parent." [code]="color">
@@ -22,9 +22,9 @@ import { DocPage } from '../docs/doc-page';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpinnerPage {
-  protected readonly sizes = `<kyo-spinner size="sm" />
-<kyo-spinner />
-<kyo-spinner size="lg" />`;
+  protected readonly sizes = `<kyo-spinner size="sm" label="Chargement" />
+<kyo-spinner label="Chargement" />
+<kyo-spinner size="lg" label="Chargement" />`;
 
   protected readonly color = `<span style="color: var(--kyo-accent-text)">
   <kyo-spinner label="" /> Synchronisation…

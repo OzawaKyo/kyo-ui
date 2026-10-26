@@ -43,14 +43,16 @@
         </a>
       </li>
     </ul>
-    <p class="sidebar__title">Composants</p>
-    <ul>
-      @for (doc of docs; track doc.slug) {
-        <li>
-          <a [routerLink]="['/components', doc.slug]" routerLinkActive="is-active">{{ doc.name }}</a>
-        </li>
-      }
-    </ul>
+    @for (group of groups; track group.category) {
+      <p class="sidebar__title">{{ group.category }}</p>
+      <ul>
+        @for (doc of group.docs; track doc.slug) {
+          <li>
+            <a [routerLink]="['/components', doc.slug]" routerLinkActive="is-active">{{ doc.name }}</a>
+          </li>
+        }
+      </ul>
+    }
   </nav>
 
   <main id="main" class="content" tabindex="-1">

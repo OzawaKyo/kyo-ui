@@ -79,4 +79,110 @@
   select.kyo-input:dir(rtl) {
     background-position: left var(--kyo-space-2-5) center;
   }
+
+  /*
+   * Styled option list where the browser supports customizable selects (Chromium 135+).
+   * Still a native <select>: keyboard, screen readers, forms and ngModel are unchanged.
+   * Other browsers keep their native list.
+   */
+  @supports (appearance: base-select) {
+    select.kyo-input,
+    select.kyo-input::picker(select) {
+      appearance: base-select;
+    }
+
+    select.kyo-input {
+      --kyo-select-picker-bg: var(--kyo-surface-raised);
+      --kyo-select-picker-radius: var(--kyo-radius-lg);
+      --kyo-select-picker-shadow: var(--kyo-shadow-lg);
+      --kyo-select-picker-max-height: 18rem;
+      --kyo-select-option-hover-bg: var(--kyo-bg-subtle);
+      --kyo-select-option-selected-fg: var(--kyo-accent-text);
+
+      display: flex;
+      align-items: center;
+    }
+
+    /* The chevron is the background image above, shared with the native fallback */
+    select.kyo-input::picker-icon {
+      display: none;
+    }
+
+    select.kyo-input::picker(select) {
+      box-sizing: border-box;
+      max-block-size: min(var(--kyo-select-picker-max-height), 50dvh);
+      margin-block: var(--kyo-space-1);
+      padding: var(--kyo-space-1);
+      border: 1px solid var(--kyo-border);
+      border-radius: var(--kyo-select-picker-radius);
+      background-color: var(--kyo-select-picker-bg);
+      color: var(--kyo-fg);
+      box-shadow: var(--kyo-select-picker-shadow);
+      overflow-y: auto;
+      opacity: 1;
+      translate: 0 0;
+      transition-property: opacity, translate, display, overlay;
+      transition-duration: var(--kyo-duration-fast);
+      transition-timing-function: var(--kyo-ease-out);
+      transition-behavior: allow-discrete;
+    }
+
+    @starting-style {
+      select.kyo-input:open::picker(select) {
+        opacity: 0;
+        translate: 0 -0.25rem;
+      }
+    }
+
+    select.kyo-input option {
+      display: flex;
+      align-items: center;
+      gap: var(--kyo-space-2);
+      min-block-size: var(--kyo-control-height-sm);
+      padding-block: var(--kyo-space-1-5);
+      padding-inline: var(--kyo-space-2-5) var(--kyo-space-2);
+      border-radius: var(--kyo-radius-control);
+      font-size: var(--kyo-input-font-size);
+      cursor: pointer;
+    }
+
+    /* Hover and keyboard highlight look the same, like a menu */
+    select.kyo-input option:is(:hover, :focus-visible):not(:disabled) {
+      background-color: var(--kyo-select-option-hover-bg);
+      outline: none;
+    }
+
+    select.kyo-input option:checked {
+      color: var(--kyo-select-option-selected-fg);
+      font-weight: var(--kyo-weight-medium);
+    }
+
+    select.kyo-input option::checkmark {
+      order: 1;
+      margin-inline-start: auto;
+      content: '';
+      inline-size: 1rem;
+      block-size: 1rem;
+      background-color: currentColor;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    select.kyo-input option:disabled {
+      color: var(--kyo-fg-disabled);
+      cursor: not-allowed;
+    }
+
+    /* The group label is drawn from the optgroup itself, so style it there and reset options */
+    select.kyo-input optgroup {
+      padding-block-start: var(--kyo-space-1-5);
+      color: var(--kyo-fg-subtle);
+      font-size: var(--kyo-text-xs);
+      font-weight: var(--kyo-weight-medium);
+    }
+
+    select.kyo-input optgroup option {
+      color: var(--kyo-fg);
+      font-weight: var(--kyo-weight-regular);
+    }
+  }
 }

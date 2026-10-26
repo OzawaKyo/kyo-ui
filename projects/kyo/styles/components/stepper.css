@@ -1,0 +1,124 @@
+@layer kyo.components {
+  .kyo-stepper {
+    --kyo-stepper-marker-size: 1.75rem;
+    --kyo-stepper-line: var(--kyo-border-strong);
+    --kyo-stepper-line-done: var(--kyo-accent);
+    --kyo-stepper-accent: var(--kyo-accent);
+
+    display: block;
+  }
+
+  .kyo-stepper__list {
+    display: flex;
+    align-items: center;
+    gap: var(--kyo-space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .kyo-stepper__item {
+    display: flex;
+    align-items: center;
+    gap: var(--kyo-space-3);
+    min-inline-size: 0;
+  }
+
+  .kyo-stepper__item:not(:last-child) {
+    flex: 1;
+  }
+
+  /* Connector to the next step */
+  .kyo-stepper__item:not(:last-child)::after {
+    content: '';
+    flex: 1;
+    min-inline-size: var(--kyo-space-4);
+    block-size: 2px;
+    border-radius: var(--kyo-radius-full);
+    background-color: var(--kyo-stepper-line);
+  }
+
+  .kyo-stepper__item[data-done]:not(:last-child)::after {
+    background-color: var(--kyo-stepper-line-done);
+  }
+
+  .kyo-stepper__step {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--kyo-space-2);
+    min-inline-size: 0;
+    margin: 0;
+    padding: var(--kyo-space-1);
+    border: 0;
+    border-radius: var(--kyo-radius-control);
+    background: none;
+    color: var(--kyo-fg-muted);
+    font: inherit;
+    font-size: var(--kyo-text-sm);
+    font-weight: var(--kyo-weight-medium);
+    cursor: pointer;
+  }
+
+  .kyo-stepper__step:disabled {
+    cursor: default;
+  }
+
+  .kyo-stepper__step:not(:disabled):hover {
+    color: var(--kyo-fg);
+  }
+
+  .kyo-stepper__step[aria-current='step'] {
+    color: var(--kyo-accent-text);
+  }
+
+  .kyo-stepper__step:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: 0;
+  }
+
+  .kyo-stepper__marker {
+    box-sizing: border-box;
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: var(--kyo-stepper-marker-size);
+    block-size: var(--kyo-stepper-marker-size);
+    border: 2px solid var(--kyo-stepper-line);
+    border-radius: var(--kyo-radius-full);
+    background-color: var(--kyo-surface);
+    font-size: var(--kyo-text-xs);
+    line-height: 1;
+  }
+
+  .kyo-stepper__marker svg {
+    inline-size: 0.875rem;
+    block-size: 0.875rem;
+  }
+
+  .kyo-stepper__step[aria-current='step'] .kyo-stepper__marker {
+    border-color: var(--kyo-stepper-accent);
+  }
+
+  .kyo-stepper__item[data-done] .kyo-stepper__marker {
+    border-color: var(--kyo-stepper-accent);
+    background-color: var(--kyo-stepper-accent);
+    color: var(--kyo-fg-on-accent);
+  }
+
+  .kyo-stepper__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Narrow screens: only the current step keeps its label */
+  @media (max-width: 30rem) {
+    .kyo-stepper__step:not([aria-current='step']) .kyo-stepper__label {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+  }
+}

@@ -34,6 +34,27 @@ import { DocPage } from '../docs/doc-page';
         </kyo-field>
       </app-doc-example>
 
+      <app-doc-example
+        heading="Select avec groupes"
+        description="Liste d'options stylée (Chrome, Edge) ; les autres navigateurs gardent leur liste native. Toujours un vrai select : clavier, lecteurs d'écran et formulaires inchangés."
+        [code]="grouped"
+        [stack]="true"
+      >
+        <kyo-field label="Motif de consultation" class="example-field">
+          <select kyoInput>
+            <optgroup label="Bilan">
+              <option>Bilan psychomoteur initial</option>
+              <option>Bilan de renouvellement</option>
+            </optgroup>
+            <optgroup label="Suivi">
+              <option selected>Séance individuelle</option>
+              <option>Séance de groupe</option>
+              <option disabled>Séance à domicile (indisponible)</option>
+            </optgroup>
+          </select>
+        </kyo-field>
+      </app-doc-example>
+
       <app-doc-example heading="Désactivé, sans field" description="kyoInput fonctionne seul ; il faut alors un aria-label ou un label externe." [code]="standalone" [stack]="true">
         <input kyoInput disabled value="Lecture seule" aria-label="Exemple désactivé" class="example-field" />
       </app-doc-example>
@@ -64,6 +85,16 @@ export class FieldPage {
     <option>France</option>
   </select>
 </kyo-field>`;
+
+  protected readonly grouped = `<select kyoInput>
+  <optgroup label="Bilan">
+    <option>Bilan psychomoteur initial</option>
+  </optgroup>
+  <optgroup label="Suivi">
+    <option selected>Séance individuelle</option>
+    <option disabled>Séance à domicile (indisponible)</option>
+  </optgroup>
+</select>`;
 
   protected readonly standalone = `<input kyoInput disabled value="Lecture seule" aria-label="Exemple désactivé" />`;
 }

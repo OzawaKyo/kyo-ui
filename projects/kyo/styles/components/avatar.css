@@ -1,0 +1,37 @@
+@layer kyo.components {
+  .kyo-avatar {
+    --kyo-avatar-size: 2.25rem;
+    --kyo-avatar-bg: var(--kyo-accent-subtle);
+    --kyo-avatar-fg: var(--kyo-accent-text);
+    --kyo-avatar-radius: var(--kyo-radius-full);
+
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: var(--kyo-avatar-size);
+    block-size: var(--kyo-avatar-size);
+    border-radius: var(--kyo-avatar-radius);
+    background-color: var(--kyo-avatar-bg);
+    color: var(--kyo-avatar-fg);
+    font-size: calc(var(--kyo-avatar-size) * 0.38);
+    font-weight: var(--kyo-weight-semibold);
+    line-height: 1;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: clip;
+  }
+
+  .kyo-avatar[data-size='sm'] {
+    --kyo-avatar-size: 1.75rem;
+  }
+
+  .kyo-avatar[data-size='lg'] {
+    --kyo-avatar-size: 3.25rem;
+  }
+
+  .kyo-avatar > img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+}
