@@ -1,6 +1,33 @@
 {
   "name": "@kyo-ui/angular",
   "version": "0.2.0",
+  "description": "Clean, accessible Angular components built on CSS design tokens: light/dark, density, RTL and native elements first.",
+  "keywords": [
+    "angular",
+    "ui",
+    "components",
+    "design-system",
+    "design-tokens",
+    "accessibility",
+    "a11y",
+    "css",
+    "dark-mode",
+    "rtl"
+  ],
+  "license": "MIT",
+  "author": "mohamed amarcha",
+  "homepage": "https://github.com/OzawaKyo/kyo-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OzawaKyo/kyo-ui.git",
+    "directory": "projects/kyo"
+  },
+  "bugs": {
+    "url": "https://github.com/OzawaKyo/kyo-ui/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^22.2.0",
     "@angular/core": "^22.2.0",

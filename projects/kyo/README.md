@@ -2,6 +2,17 @@
 
 Clean, accessible Angular components built on CSS design tokens.
 
+Requires Angular 22.2 or later.
+
+## Components
+
+- **Actions**: Button
+- **Forms**: Field & Input (incl. styled select), Input group, Checkbox, Radio, Switch, Choice card, File drop
+- **Display**: Avatar, Badge, Card, Description list, Icon, List
+- **Navigation**: Tabs, Stepper
+- **Feedback**: Alert, Toast, Progress, Spinner, Empty state
+- **Overlays**: Dialog & Confirm
+
 ## Install
 
 ```bash
