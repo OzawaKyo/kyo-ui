@@ -2,6 +2,14 @@
 
 Clean, accessible Angular components built on CSS design tokens.
 
+[![npm](https://img.shields.io/npm/v/@kyo-ui/angular?color=2563eb)](https://www.npmjs.com/package/@kyo-ui/angular)
+
+![Kyo UI components in light and dark themes](docs/kyo-ui-preview.png)
+
+```bash
+npm install @kyo-ui/angular
+```
+
 This workspace contains:
 
 - `projects/kyo`: the library, published as [`@kyo-ui/angular`](projects/kyo/README.md)
