@@ -1,0 +1,110 @@
+@layer kyo.components {
+  .kyo-alert {
+    --kyo-alert-padding: var(--kyo-space-4);
+    --kyo-alert-radius: var(--kyo-radius-container);
+    --kyo-alert-bg: var(--kyo-bg-subtle);
+    --kyo-alert-fg: var(--kyo-fg);
+    --kyo-alert-title-color: var(--kyo-fg);
+    --kyo-alert-border-color: var(--kyo-border);
+    --kyo-alert-icon-color: var(--kyo-fg-muted);
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--kyo-space-3);
+    padding: var(--kyo-alert-padding);
+    border: 1px solid var(--kyo-alert-border-color);
+    border-radius: var(--kyo-alert-radius);
+    background-color: var(--kyo-alert-bg);
+    color: var(--kyo-alert-fg);
+    font-size: var(--kyo-text-sm);
+    line-height: var(--kyo-leading-normal);
+  }
+
+  .kyo-alert[data-tone='accent'] {
+    --kyo-alert-bg: var(--kyo-accent-subtle);
+    --kyo-alert-title-color: var(--kyo-accent-text);
+    --kyo-alert-border-color: var(--kyo-accent-border);
+    --kyo-alert-icon-color: var(--kyo-accent);
+  }
+
+  .kyo-alert[data-tone='success'] {
+    --kyo-alert-bg: var(--kyo-success-subtle);
+    --kyo-alert-title-color: var(--kyo-success-text);
+    --kyo-alert-border-color: var(--kyo-success-border);
+    --kyo-alert-icon-color: var(--kyo-success);
+  }
+
+  .kyo-alert[data-tone='warning'] {
+    --kyo-alert-bg: var(--kyo-warning-subtle);
+    --kyo-alert-title-color: var(--kyo-warning-text);
+    --kyo-alert-border-color: var(--kyo-warning-border);
+    --kyo-alert-icon-color: var(--kyo-warning);
+  }
+
+  .kyo-alert[data-tone='danger'] {
+    --kyo-alert-bg: var(--kyo-danger-subtle);
+    --kyo-alert-title-color: var(--kyo-danger-text);
+    --kyo-alert-border-color: var(--kyo-danger-border);
+    --kyo-alert-icon-color: var(--kyo-danger);
+  }
+
+  .kyo-alert[data-tone='info'] {
+    --kyo-alert-bg: var(--kyo-info-subtle);
+    --kyo-alert-title-color: var(--kyo-info-text);
+    --kyo-alert-border-color: var(--kyo-info-border);
+    --kyo-alert-icon-color: var(--kyo-info);
+  }
+
+  .kyo-alert__icon {
+    flex-shrink: 0;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    color: var(--kyo-alert-icon-color);
+  }
+
+  .kyo-alert__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--kyo-space-0-5);
+    min-inline-size: 0;
+  }
+
+  .kyo-alert__title {
+    margin: 0;
+    color: var(--kyo-alert-title-color);
+    font-weight: var(--kyo-weight-semibold);
+  }
+
+  .kyo-alert__close {
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    margin-block-start: calc(-1 * var(--kyo-space-0-5));
+    margin-inline-end: calc(-1 * var(--kyo-space-1));
+    padding: 0;
+    border: 0;
+    border-radius: var(--kyo-radius-sm);
+    background: transparent;
+    color: var(--kyo-fg-muted);
+    cursor: pointer;
+  }
+
+  .kyo-alert__close:hover {
+    background-color: color-mix(in oklab, currentColor 10%, transparent);
+    color: var(--kyo-fg);
+  }
+
+  .kyo-alert__close:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: 0;
+  }
+
+  .kyo-alert__close svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+}

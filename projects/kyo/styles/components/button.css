@@ -1,0 +1,111 @@
+@layer kyo.components {
+  .kyo-button {
+    --kyo-button-height: var(--kyo-control-height-md);
+    --kyo-button-padding-inline: var(--kyo-space-4);
+    --kyo-button-gap: var(--kyo-space-2);
+    --kyo-button-radius: var(--kyo-radius-control);
+    --kyo-button-font-size: var(--kyo-text-sm);
+    --kyo-button-font-weight: var(--kyo-weight-medium);
+    --kyo-button-bg: var(--kyo-accent);
+    --kyo-button-bg-hover: var(--kyo-accent-hover);
+    --kyo-button-bg-active: var(--kyo-accent-active);
+    --kyo-button-fg: var(--kyo-fg-on-accent);
+    --kyo-button-border-color: transparent;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--kyo-button-gap);
+    block-size: var(--kyo-button-height);
+    margin: 0;
+    padding-block: 0;
+    padding-inline: var(--kyo-button-padding-inline);
+    border: 1px solid var(--kyo-button-border-color);
+    border-radius: var(--kyo-button-radius);
+    background-color: var(--kyo-button-bg);
+    color: var(--kyo-button-fg);
+    font-family: inherit;
+    font-size: var(--kyo-button-font-size);
+    font-weight: var(--kyo-button-font-weight);
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition-property: background-color, border-color, color;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-button:hover:not(:disabled, [aria-disabled='true']) {
+    background-color: var(--kyo-button-bg-hover);
+  }
+
+  .kyo-button:active:not(:disabled, [aria-disabled='true']) {
+    background-color: var(--kyo-button-bg-active);
+  }
+
+  .kyo-button:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-button:disabled,
+  .kyo-button[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  a.kyo-button[aria-disabled='true'] {
+    pointer-events: none;
+  }
+
+  .kyo-button[aria-busy='true'] {
+    opacity: 1;
+    cursor: progress;
+  }
+
+  /* Variants */
+  .kyo-button[data-variant='secondary'] {
+    --kyo-button-bg: var(--kyo-surface);
+    --kyo-button-bg-hover: var(--kyo-bg-subtle);
+    --kyo-button-bg-active: var(--kyo-bg-muted);
+    --kyo-button-fg: var(--kyo-fg);
+    --kyo-button-border-color: var(--kyo-border-strong);
+  }
+
+  .kyo-button[data-variant='ghost'] {
+    --kyo-button-bg: transparent;
+    --kyo-button-bg-hover: var(--kyo-bg-muted);
+    --kyo-button-bg-active: var(--kyo-border);
+    --kyo-button-fg: var(--kyo-fg);
+  }
+
+  .kyo-button[data-variant='danger'] {
+    --kyo-button-bg: var(--kyo-danger-solid);
+    --kyo-button-bg-hover: var(--kyo-danger-solid-hover);
+    --kyo-button-bg-active: var(--kyo-danger-solid-hover);
+    --kyo-button-fg: var(--kyo-fg-on-accent);
+  }
+
+  /* Sizes */
+  .kyo-button[data-size='sm'] {
+    --kyo-button-height: var(--kyo-control-height-sm);
+    --kyo-button-padding-inline: var(--kyo-space-3);
+    --kyo-button-gap: var(--kyo-space-1-5);
+  }
+
+  .kyo-button[data-size='lg'] {
+    --kyo-button-height: var(--kyo-control-height-lg);
+    --kyo-button-padding-inline: var(--kyo-space-5);
+    --kyo-button-font-size: var(--kyo-text-md);
+  }
+
+  @media (forced-colors: active) {
+    .kyo-button {
+      border-color: ButtonText;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/*
+ * Optional document defaults. Not included in kyo.css: a library must not restyle the
+ * host application unless asked. Import it explicitly in apps built on this library.
+ */
+@layer kyo.base {
+  :where(*, *::before, *::after) {
+    box-sizing: border-box;
+  }
+
+  :where(html) {
+    font-family: var(--kyo-font-sans);
+    line-height: var(--kyo-leading-normal);
+    color: var(--kyo-fg);
+    background-color: var(--kyo-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+  }
+
+  :where(body) {
+    margin: 0;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    line-height: var(--kyo-leading-tight);
+    letter-spacing: var(--kyo-tracking-tight);
+  }
+
+  :where(code, kbd, pre, samp) {
+    font-family: var(--kyo-font-mono);
+  }
+}

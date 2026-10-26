@@ -1,0 +1,88 @@
+/*
+ * Semantic tokens: what components consume.
+ *
+ * Light and dark values live side by side through light-dark(), resolved against the
+ * `color-scheme` of the element using them. Default follows the OS; force a theme with
+ * `data-kyo-theme="light" | "dark"` on <html> or on any subtree.
+ *
+ * Tokens are declared on every [data-kyo-theme] element too, so a brand override placed on a
+ * themed subtree re-derives every color-mix() below.
+ *
+ * Always mix in oklab, never oklch: white and grays carry an explicit 0° hue in oklch, so an
+ * oklch mix would interpolate the hue through red and tint every subtle background pink.
+ */
+@layer kyo.tokens {
+  :root,
+  [data-kyo-theme] {
+    color-scheme: light dark;
+
+    /* Surfaces */
+    --kyo-bg: light-dark(var(--kyo-gray-0), var(--kyo-gray-950));
+    --kyo-bg-subtle: light-dark(var(--kyo-gray-50), var(--kyo-gray-900));
+    --kyo-bg-muted: light-dark(var(--kyo-gray-100), var(--kyo-gray-800));
+    --kyo-surface: light-dark(var(--kyo-gray-0), var(--kyo-gray-900));
+    --kyo-surface-raised: light-dark(var(--kyo-gray-0), var(--kyo-gray-800));
+    --kyo-backdrop: light-dark(oklch(0% 0 0 / 0.4), oklch(0% 0 0 / 0.6));
+
+    /* Text */
+    --kyo-fg: light-dark(var(--kyo-gray-900), var(--kyo-gray-50));
+    --kyo-fg-muted: light-dark(var(--kyo-gray-600), var(--kyo-gray-400));
+    --kyo-fg-subtle: var(--kyo-gray-500);
+    --kyo-fg-disabled: light-dark(var(--kyo-gray-400), var(--kyo-gray-600));
+    --kyo-fg-on-accent: var(--kyo-gray-0);
+
+    /* Borders */
+    --kyo-border: light-dark(var(--kyo-gray-200), var(--kyo-gray-800));
+    --kyo-border-strong: light-dark(var(--kyo-gray-300), var(--kyo-gray-700));
+
+    /* Accent (brand) */
+    --kyo-accent: var(--kyo-brand-600);
+    --kyo-accent-hover: light-dark(var(--kyo-brand-700), var(--kyo-brand-500));
+    --kyo-accent-active: light-dark(var(--kyo-brand-800), var(--kyo-brand-400));
+    --kyo-accent-text: light-dark(var(--kyo-brand-700), var(--kyo-brand-300));
+    --kyo-accent-subtle: color-mix(in oklab, var(--kyo-accent) 12%, var(--kyo-surface));
+    --kyo-accent-border: color-mix(in oklab, var(--kyo-accent) 35%, var(--kyo-surface));
+
+    /* Status: base (icons, borders), text (readable on subtle), subtle (backgrounds) */
+    --kyo-success: light-dark(var(--kyo-green-600), var(--kyo-green-400));
+    --kyo-success-text: light-dark(var(--kyo-green-800), var(--kyo-green-200));
+    --kyo-success-subtle: color-mix(in oklab, var(--kyo-success) 12%, var(--kyo-surface));
+    --kyo-success-border: color-mix(in oklab, var(--kyo-success) 35%, var(--kyo-surface));
+
+    --kyo-warning: light-dark(var(--kyo-amber-600), var(--kyo-amber-400));
+    --kyo-warning-text: light-dark(var(--kyo-amber-800), var(--kyo-amber-200));
+    --kyo-warning-subtle: color-mix(in oklab, var(--kyo-warning) 12%, var(--kyo-surface));
+    --kyo-warning-border: color-mix(in oklab, var(--kyo-warning) 35%, var(--kyo-surface));
+
+    --kyo-danger: light-dark(var(--kyo-red-600), var(--kyo-red-400));
+    --kyo-danger-text: light-dark(var(--kyo-red-800), var(--kyo-red-200));
+    --kyo-danger-subtle: color-mix(in oklab, var(--kyo-danger) 12%, var(--kyo-surface));
+    --kyo-danger-border: color-mix(in oklab, var(--kyo-danger) 35%, var(--kyo-surface));
+    --kyo-danger-solid: var(--kyo-red-600);
+    --kyo-danger-solid-hover: color-mix(in oklab, var(--kyo-red-600) 85%, black);
+
+    --kyo-info: light-dark(var(--kyo-sky-600), var(--kyo-sky-400));
+    --kyo-info-text: light-dark(var(--kyo-sky-800), var(--kyo-sky-200));
+    --kyo-info-subtle: color-mix(in oklab, var(--kyo-info) 12%, var(--kyo-surface));
+    --kyo-info-border: color-mix(in oklab, var(--kyo-info) 35%, var(--kyo-surface));
+
+    /* Focus */
+    --kyo-focus-ring-color: light-dark(var(--kyo-brand-600), var(--kyo-brand-400));
+
+    /* Elevation */
+    --kyo-shadow-color: light-dark(oklch(20% 0.02 260 / 0.08), oklch(0% 0 0 / 0.45));
+    --kyo-shadow-xs: 0 1px 2px var(--kyo-shadow-color);
+    --kyo-shadow-sm: 0 1px 3px var(--kyo-shadow-color), 0 1px 2px -1px var(--kyo-shadow-color);
+    --kyo-shadow-md: 0 4px 6px -1px var(--kyo-shadow-color), 0 2px 4px -2px var(--kyo-shadow-color);
+    --kyo-shadow-lg:
+      0 10px 15px -3px var(--kyo-shadow-color), 0 4px 6px -4px var(--kyo-shadow-color);
+  }
+
+  [data-kyo-theme='light'] {
+    color-scheme: light;
+  }
+
+  [data-kyo-theme='dark'] {
+    color-scheme: dark;
+  }
+}

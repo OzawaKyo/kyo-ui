@@ -1,0 +1,55 @@
+@layer kyo.components {
+  .kyo-card {
+    --kyo-card-bg: var(--kyo-surface);
+    --kyo-card-fg: var(--kyo-fg);
+    --kyo-card-border-color: var(--kyo-border);
+    --kyo-card-radius: var(--kyo-radius-container);
+    --kyo-card-padding: var(--kyo-space-5);
+    --kyo-card-shadow: var(--kyo-shadow-xs);
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    border: 1px solid var(--kyo-card-border-color);
+    border-radius: var(--kyo-card-radius);
+    background-color: var(--kyo-card-bg);
+    color: var(--kyo-card-fg);
+    box-shadow: var(--kyo-card-shadow);
+    overflow: clip;
+  }
+
+  .kyo-card__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kyo-space-1);
+    padding: var(--kyo-card-padding) var(--kyo-card-padding) 0;
+  }
+
+  .kyo-card__header :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+    font-size: var(--kyo-text-md);
+    font-weight: var(--kyo-weight-semibold);
+  }
+
+  .kyo-card__header p {
+    margin: 0;
+    color: var(--kyo-fg-muted);
+    font-size: var(--kyo-text-sm);
+  }
+
+  .kyo-card__body {
+    flex: 1;
+    padding: var(--kyo-card-padding);
+  }
+
+  .kyo-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--kyo-space-2);
+    padding: var(--kyo-space-3) var(--kyo-card-padding);
+    border-block-start: 1px solid var(--kyo-card-border-color);
+    background-color: var(--kyo-bg-subtle);
+  }
+}

@@ -1,0 +1,25 @@
+/*
+ * Library entry stylesheet: tokens + every component.
+ *
+ * Everything lives in the `kyo` cascade layer. Any unlayered CSS from the host app wins
+ * over it whatever its specificity, and layers declared after `kyo` (Tailwind's, for
+ * instance) win as well. Import this file before the app's own styles.
+ *
+ * To ship less CSS, import tokens.css, theme.css, core.css and only the needed
+ * components/*.css instead.
+ */
+@layer kyo.tokens, kyo.base, kyo.components, kyo.utilities;
+
+@import './tokens.css';
+@import './theme.css';
+@import './core.css';
+@import './components/button.css';
+@import './components/spinner.css';
+@import './components/badge.css';
+@import './components/card.css';
+@import './components/field.css';
+@import './components/input.css';
+@import './components/choice.css';
+@import './components/checkbox.css';
+@import './components/switch.css';
+@import './components/alert.css';

@@ -1,0 +1,70 @@
+@layer kyo.components {
+  .kyo-checkbox {
+    --kyo-checkbox-size: 1rem;
+    --kyo-checkbox-radius: var(--kyo-radius-sm);
+    --kyo-checkbox-bg: var(--kyo-surface);
+    --kyo-checkbox-border-color: var(--kyo-border-strong);
+    --kyo-checkbox-checked-bg: var(--kyo-accent);
+    --kyo-checkbox-checked-bg-hover: var(--kyo-accent-hover);
+
+    appearance: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: var(--kyo-checkbox-size);
+    block-size: var(--kyo-checkbox-size);
+    margin: 0;
+    border: 1px solid var(--kyo-checkbox-border-color);
+    border-radius: var(--kyo-checkbox-radius);
+    background-color: var(--kyo-checkbox-bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    transition-property: background-color, border-color;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-checkbox:hover:not(:disabled, :checked, :indeterminate) {
+    border-color: color-mix(in oklab, var(--kyo-checkbox-border-color), var(--kyo-fg) 25%);
+  }
+
+  .kyo-checkbox:is(:checked, :indeterminate) {
+    border-color: var(--kyo-checkbox-checked-bg);
+    background-color: var(--kyo-checkbox-checked-bg);
+  }
+
+  .kyo-checkbox:is(:checked, :indeterminate):hover:not(:disabled) {
+    border-color: var(--kyo-checkbox-checked-bg-hover);
+    background-color: var(--kyo-checkbox-checked-bg-hover);
+  }
+
+  /* The mark color is baked into the SVG and matches --kyo-fg-on-accent (white) */
+  .kyo-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5'/%3E%3C/svg%3E");
+  }
+
+  .kyo-checkbox:indeterminate {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4.5 8h7'/%3E%3C/svg%3E");
+  }
+
+  .kyo-checkbox:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-checkbox:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .kyo-checkbox:is([aria-invalid='true'], .ng-invalid.ng-touched) {
+    --kyo-checkbox-border-color: var(--kyo-danger);
+  }
+
+  @media (forced-colors: active) {
+    .kyo-checkbox {
+      appearance: auto;
+    }
+  }
+}

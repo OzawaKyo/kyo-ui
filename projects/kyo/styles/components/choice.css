@@ -1,0 +1,17 @@
+/* Inline label wrapping a checkbox, radio or switch */
+@layer kyo.components {
+  .kyo-choice {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--kyo-space-2);
+    color: var(--kyo-fg);
+    font-size: var(--kyo-text-sm);
+    line-height: var(--kyo-leading-snug);
+    cursor: pointer;
+  }
+
+  .kyo-choice:has(:disabled) {
+    color: var(--kyo-fg-disabled);
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,65 @@
+@layer kyo.components {
+  .kyo-switch {
+    --kyo-switch-width: 2.25rem;
+    --kyo-switch-height: 1.25rem;
+    --kyo-switch-inset: 2px;
+    --kyo-switch-track: var(--kyo-border-strong);
+    --kyo-switch-track-checked: var(--kyo-accent);
+    --kyo-switch-thumb: var(--kyo-gray-0);
+
+    appearance: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: var(--kyo-switch-width);
+    block-size: var(--kyo-switch-height);
+    margin: 0;
+    padding: var(--kyo-switch-inset);
+    border: 0;
+    border-radius: var(--kyo-radius-full);
+    background-color: var(--kyo-switch-track);
+    /* The thumb is a background so no pseudo-element is needed on <input> */
+    background-image: radial-gradient(
+      circle closest-side,
+      var(--kyo-switch-thumb) calc(100% - 1px),
+      transparent 100%
+    );
+    background-origin: content-box;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: calc(var(--kyo-switch-height) - 2 * var(--kyo-switch-inset)) 100%;
+    background-position: left center;
+    cursor: pointer;
+    transition-property: background-color, background-position;
+    transition-duration: var(--kyo-duration-normal);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-switch:checked {
+    background-color: var(--kyo-switch-track-checked);
+    background-position: right center;
+  }
+
+  .kyo-switch:dir(rtl) {
+    background-position: right center;
+  }
+
+  .kyo-switch:checked:dir(rtl) {
+    background-position: left center;
+  }
+
+  .kyo-switch:focus-visible {
+    outline: var(--kyo-focus-ring-width) solid var(--kyo-focus-ring-color);
+    outline-offset: var(--kyo-focus-ring-offset);
+  }
+
+  .kyo-switch:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .kyo-switch {
+      appearance: auto;
+    }
+  }
+}

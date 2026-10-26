@@ -1,0 +1,41 @@
+@layer kyo.components {
+  .kyo-spinner {
+    --kyo-spinner-size: 1.25rem;
+    --kyo-spinner-thickness: 2px;
+    --kyo-spinner-color: currentColor;
+    --kyo-spinner-track: color-mix(in oklab, currentColor 20%, transparent);
+    --kyo-spinner-speed: 700ms;
+
+    box-sizing: border-box;
+    display: inline-block;
+    flex-shrink: 0;
+    inline-size: var(--kyo-spinner-size);
+    block-size: var(--kyo-spinner-size);
+    border: var(--kyo-spinner-thickness) solid var(--kyo-spinner-track);
+    border-block-start-color: var(--kyo-spinner-color);
+    border-radius: var(--kyo-radius-full);
+    animation: kyo-spin var(--kyo-spinner-speed) linear infinite;
+  }
+
+  .kyo-spinner[data-size='sm'] {
+    --kyo-spinner-size: 1rem;
+  }
+
+  .kyo-spinner[data-size='lg'] {
+    --kyo-spinner-size: 2rem;
+    --kyo-spinner-thickness: 3px;
+  }
+
+  /* A frozen spinner reads as broken: slow it down instead of stopping it */
+  @media (prefers-reduced-motion: reduce) {
+    .kyo-spinner {
+      --kyo-spinner-speed: 1600ms;
+    }
+  }
+
+  @keyframes kyo-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}

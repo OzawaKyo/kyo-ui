@@ -1,0 +1,40 @@
+@layer kyo.components {
+  .kyo-field {
+    --kyo-field-gap: var(--kyo-space-1-5);
+    --kyo-field-label-color: var(--kyo-fg);
+    --kyo-field-hint-color: var(--kyo-fg-muted);
+    --kyo-field-error-color: var(--kyo-danger-text);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--kyo-field-gap);
+    min-inline-size: 0;
+  }
+
+  .kyo-field__label {
+    color: var(--kyo-field-label-color);
+    font-size: var(--kyo-text-sm);
+    font-weight: var(--kyo-weight-medium);
+    line-height: var(--kyo-leading-tight);
+  }
+
+  .kyo-field__required {
+    margin-inline-start: var(--kyo-space-0-5);
+    color: var(--kyo-danger);
+  }
+
+  .kyo-field__hint,
+  .kyo-field__error {
+    margin: 0;
+    font-size: var(--kyo-text-sm);
+    line-height: var(--kyo-leading-snug);
+  }
+
+  .kyo-field__hint {
+    color: var(--kyo-field-hint-color);
+  }
+
+  .kyo-field__error {
+    color: var(--kyo-field-error-color);
+  }
+}

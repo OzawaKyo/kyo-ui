@@ -1,0 +1,57 @@
+@layer kyo.components {
+  .kyo-badge {
+    --kyo-badge-height: 1.375rem;
+    --kyo-badge-padding-inline: var(--kyo-space-2);
+    --kyo-badge-radius: var(--kyo-radius-full);
+    --kyo-badge-font-size: var(--kyo-text-xs);
+    --kyo-badge-bg: var(--kyo-bg-muted);
+    --kyo-badge-fg: var(--kyo-fg-muted);
+    --kyo-badge-border-color: var(--kyo-border);
+
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--kyo-space-1);
+    block-size: var(--kyo-badge-height);
+    padding-inline: var(--kyo-badge-padding-inline);
+    border: 1px solid var(--kyo-badge-border-color);
+    border-radius: var(--kyo-badge-radius);
+    background-color: var(--kyo-badge-bg);
+    color: var(--kyo-badge-fg);
+    font-size: var(--kyo-badge-font-size);
+    font-weight: var(--kyo-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .kyo-badge[data-tone='accent'] {
+    --kyo-badge-bg: var(--kyo-accent-subtle);
+    --kyo-badge-fg: var(--kyo-accent-text);
+    --kyo-badge-border-color: var(--kyo-accent-border);
+  }
+
+  .kyo-badge[data-tone='success'] {
+    --kyo-badge-bg: var(--kyo-success-subtle);
+    --kyo-badge-fg: var(--kyo-success-text);
+    --kyo-badge-border-color: var(--kyo-success-border);
+  }
+
+  .kyo-badge[data-tone='warning'] {
+    --kyo-badge-bg: var(--kyo-warning-subtle);
+    --kyo-badge-fg: var(--kyo-warning-text);
+    --kyo-badge-border-color: var(--kyo-warning-border);
+  }
+
+  .kyo-badge[data-tone='danger'] {
+    --kyo-badge-bg: var(--kyo-danger-subtle);
+    --kyo-badge-fg: var(--kyo-danger-text);
+    --kyo-badge-border-color: var(--kyo-danger-border);
+  }
+
+  .kyo-badge[data-tone='info'] {
+    --kyo-badge-bg: var(--kyo-info-subtle);
+    --kyo-badge-fg: var(--kyo-info-text);
+    --kyo-badge-border-color: var(--kyo-info-border);
+  }
+}

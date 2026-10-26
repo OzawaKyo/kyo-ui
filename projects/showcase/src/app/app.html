@@ -1,0 +1,59 @@
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="topbar">
+  <a class="brand" routerLink="/">
+    <span class="brand__mark" aria-hidden="true"></span>
+    Kyo UI
+  </a>
+
+  <div class="toolbar" aria-label="Préférences d'affichage" role="group">
+    <label>
+      <span>Thème</span>
+      <select kyoInput [value]="prefs.theme()" (change)="setTheme($any($event.target).value)">
+        <option value="system">Système</option>
+        <option value="light">Clair</option>
+        <option value="dark">Sombre</option>
+      </select>
+    </label>
+    <label>
+      <span>Densité</span>
+      <select kyoInput [value]="prefs.density()" (change)="setDensity($any($event.target).value)">
+        <option value="comfortable">Confort</option>
+        <option value="compact">Compact</option>
+      </select>
+    </label>
+    <label>
+      <span>Sens</span>
+      <select kyoInput [value]="prefs.dir()" (change)="setDir($any($event.target).value)">
+        <option value="ltr">LTR</option>
+        <option value="rtl">RTL</option>
+      </select>
+    </label>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="sidebar__title">Guide</p>
+    <ul>
+      <li><a routerLink="/foundations" routerLinkActive="is-active">Fondations</a></li>
+      <li>
+        <a routerLink="/components" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+          Tous les composants
+        </a>
+      </li>
+    </ul>
+    <p class="sidebar__title">Composants</p>
+    <ul>
+      @for (doc of docs; track doc.slug) {
+        <li>
+          <a [routerLink]="['/components', doc.slug]" routerLinkActive="is-active">{{ doc.name }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <main id="main" class="content" tabindex="-1">
+    <router-outlet />
+  </main>
+</div>

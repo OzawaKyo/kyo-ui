@@ -1,0 +1,152 @@
+/*
+ * Primitive tokens: raw values, theme independent.
+ * Components never use these directly; they go through semantic tokens (theme.css).
+ */
+@layer kyo.tokens {
+  :root {
+    /* Neutral palette (slightly cool gray) */
+    --kyo-gray-0: oklch(100% 0 0);
+    --kyo-gray-50: oklch(98.5% 0.002 260);
+    --kyo-gray-100: oklch(96.7% 0.003 260);
+    --kyo-gray-200: oklch(92.8% 0.006 260);
+    --kyo-gray-300: oklch(87.2% 0.01 260);
+    --kyo-gray-400: oklch(70.7% 0.015 260);
+    --kyo-gray-500: oklch(55.1% 0.018 260);
+    --kyo-gray-600: oklch(44.6% 0.02 260);
+    --kyo-gray-700: oklch(37.3% 0.02 260);
+    --kyo-gray-800: oklch(27.8% 0.02 260);
+    --kyo-gray-900: oklch(21% 0.02 260);
+    --kyo-gray-950: oklch(14.5% 0.02 260);
+
+    /* Brand palette: override these to rebrand the whole library */
+    --kyo-brand-50: oklch(97% 0.014 262);
+    --kyo-brand-100: oklch(93.2% 0.032 262);
+    --kyo-brand-200: oklch(88.2% 0.059 262);
+    --kyo-brand-300: oklch(80.9% 0.105 262);
+    --kyo-brand-400: oklch(70.7% 0.165 262);
+    --kyo-brand-500: oklch(62.3% 0.214 262);
+    --kyo-brand-600: oklch(54.6% 0.245 262);
+    --kyo-brand-700: oklch(48.8% 0.243 262);
+    --kyo-brand-800: oklch(42.4% 0.199 262);
+    --kyo-brand-900: oklch(37.9% 0.146 262);
+    --kyo-brand-950: oklch(28.2% 0.091 262);
+
+    /* Status palettes */
+    --kyo-green-200: oklch(92.5% 0.084 155);
+    --kyo-green-400: oklch(79.2% 0.209 151);
+    --kyo-green-600: oklch(62.7% 0.194 149);
+    --kyo-green-800: oklch(44.8% 0.119 151);
+
+    --kyo-amber-200: oklch(92.4% 0.12 95);
+    --kyo-amber-400: oklch(82.8% 0.189 84);
+    --kyo-amber-600: oklch(66.6% 0.179 58);
+    --kyo-amber-800: oklch(47.3% 0.137 46);
+
+    --kyo-red-200: oklch(88.5% 0.062 18);
+    --kyo-red-400: oklch(70.4% 0.191 22);
+    --kyo-red-600: oklch(57.7% 0.245 27);
+    --kyo-red-800: oklch(44.4% 0.177 27);
+
+    --kyo-sky-200: oklch(90.1% 0.058 230);
+    --kyo-sky-400: oklch(74.6% 0.16 232);
+    --kyo-sky-600: oklch(58.8% 0.158 242);
+    --kyo-sky-800: oklch(44.3% 0.11 241);
+
+    /* Spacing: 4px grid, expressed in rem so it follows the user's font size */
+    --kyo-space-0: 0;
+    --kyo-space-px: 1px;
+    --kyo-space-0-5: 0.125rem;
+    --kyo-space-1: 0.25rem;
+    --kyo-space-1-5: 0.375rem;
+    --kyo-space-2: 0.5rem;
+    --kyo-space-2-5: 0.625rem;
+    --kyo-space-3: 0.75rem;
+    --kyo-space-4: 1rem;
+    --kyo-space-5: 1.25rem;
+    --kyo-space-6: 1.5rem;
+    --kyo-space-8: 2rem;
+    --kyo-space-10: 2.5rem;
+    --kyo-space-12: 3rem;
+    --kyo-space-16: 4rem;
+
+    /* Radius */
+    --kyo-radius-none: 0;
+    --kyo-radius-xs: 0.125rem;
+    --kyo-radius-sm: 0.25rem;
+    --kyo-radius-md: 0.375rem;
+    --kyo-radius-lg: 0.5rem;
+    --kyo-radius-xl: 0.75rem;
+    --kyo-radius-full: 9999px;
+    --kyo-radius-control: var(--kyo-radius-md);
+    --kyo-radius-container: var(--kyo-radius-lg);
+
+    /* Typography. No webfont is shipped: the host app decides. */
+    --kyo-font-sans:
+      ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      sans-serif;
+    --kyo-font-mono:
+      ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    --kyo-text-xs: 0.75rem;
+    --kyo-text-sm: 0.875rem;
+    --kyo-text-md: 1rem;
+    --kyo-text-lg: 1.125rem;
+    --kyo-text-xl: 1.25rem;
+    --kyo-text-2xl: 1.5rem;
+    --kyo-text-3xl: 1.875rem;
+    --kyo-text-4xl: 2.25rem;
+
+    --kyo-leading-tight: 1.25;
+    --kyo-leading-snug: 1.375;
+    --kyo-leading-normal: 1.5;
+
+    --kyo-weight-regular: 400;
+    --kyo-weight-medium: 500;
+    --kyo-weight-semibold: 600;
+    --kyo-weight-bold: 700;
+
+    --kyo-tracking-tight: -0.015em;
+
+    /* Motion */
+    --kyo-duration-fast: 100ms;
+    --kyo-duration-normal: 150ms;
+    --kyo-duration-slow: 250ms;
+    --kyo-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --kyo-ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+    /* Stacking: reserved now so future overlays never fight each other */
+    --kyo-z-dropdown: 1000;
+    --kyo-z-sticky: 1100;
+    --kyo-z-overlay: 1200;
+    --kyo-z-modal: 1300;
+    --kyo-z-popover: 1400;
+    --kyo-z-toast: 1500;
+    --kyo-z-tooltip: 1600;
+
+    /* Focus */
+    --kyo-focus-ring-width: 2px;
+    --kyo-focus-ring-offset: 2px;
+  }
+
+  /* Density: control sizes are resolved per element, so density can be set on any subtree */
+  :root,
+  [data-kyo-density] {
+    --kyo-control-height-sm: 2rem;
+    --kyo-control-height-md: 2.5rem;
+    --kyo-control-height-lg: 3rem;
+  }
+
+  [data-kyo-density='compact'] {
+    --kyo-control-height-sm: 1.75rem;
+    --kyo-control-height-md: 2rem;
+    --kyo-control-height-lg: 2.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --kyo-duration-fast: 0ms;
+      --kyo-duration-normal: 0ms;
+      --kyo-duration-slow: 0ms;
+    }
+  }
+}

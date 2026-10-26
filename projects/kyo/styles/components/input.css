@@ -1,0 +1,82 @@
+@layer kyo.components {
+  .kyo-input {
+    --kyo-input-height: var(--kyo-control-height-md);
+    --kyo-input-padding-inline: var(--kyo-space-3);
+    --kyo-input-radius: var(--kyo-radius-control);
+    --kyo-input-font-size: var(--kyo-text-sm);
+    --kyo-input-bg: var(--kyo-surface);
+    --kyo-input-fg: var(--kyo-fg);
+    --kyo-input-border-color: var(--kyo-border-strong);
+    --kyo-input-border-color-hover: color-mix(in oklab, var(--kyo-border-strong), var(--kyo-fg) 25%);
+    --kyo-input-ring-color: var(--kyo-focus-ring-color);
+
+    box-sizing: border-box;
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 0;
+    block-size: var(--kyo-input-height);
+    margin: 0;
+    padding-block: 0;
+    padding-inline: var(--kyo-input-padding-inline);
+    border: 1px solid var(--kyo-input-border-color);
+    border-radius: var(--kyo-input-radius);
+    background-color: var(--kyo-input-bg);
+    color: var(--kyo-input-fg);
+    font-family: inherit;
+    font-size: var(--kyo-input-font-size);
+    line-height: var(--kyo-leading-normal);
+    /* Transparent outline becomes visible in forced-colors mode, box-shadow does not */
+    outline: 2px solid transparent;
+    outline-offset: -1px;
+    transition-property: border-color, box-shadow;
+    transition-duration: var(--kyo-duration-fast);
+    transition-timing-function: var(--kyo-ease-standard);
+  }
+
+  .kyo-input::placeholder {
+    color: var(--kyo-fg-subtle);
+    opacity: 1;
+  }
+
+  .kyo-input:hover:not(:disabled, :focus) {
+    border-color: var(--kyo-input-border-color-hover);
+  }
+
+  .kyo-input:focus {
+    border-color: var(--kyo-input-ring-color);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--kyo-input-ring-color) 25%, transparent);
+  }
+
+  .kyo-input:disabled {
+    background-color: var(--kyo-bg-subtle);
+    color: var(--kyo-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  .kyo-input:is([aria-invalid='true'], .ng-invalid.ng-touched) {
+    --kyo-input-border-color: var(--kyo-danger);
+    --kyo-input-border-color-hover: var(--kyo-danger);
+    --kyo-input-ring-color: var(--kyo-danger);
+  }
+
+  textarea.kyo-input {
+    block-size: auto;
+    min-block-size: 5rem;
+    padding-block: var(--kyo-space-2);
+    resize: vertical;
+  }
+
+  select.kyo-input {
+    appearance: none;
+    padding-inline-end: var(--kyo-space-8);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23808590' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--kyo-space-2-5) center;
+    background-size: 1rem;
+    cursor: pointer;
+  }
+
+  select.kyo-input:dir(rtl) {
+    background-position: left var(--kyo-space-2-5) center;
+  }
+}
